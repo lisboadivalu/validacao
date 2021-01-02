@@ -36,7 +36,7 @@ class ClienteControlador extends Controller
      */
     public function store(Request $request)
     {
-        $regras = [
+        $regras = [                                     //regras para faze a validacao dos campos do formulario
             "nome" => "required",
             "idade" => "required",
             "endereco" => "required",
