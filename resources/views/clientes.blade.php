@@ -13,7 +13,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Cadastro de Cliente</title>
+    <title>Clientes</title>
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <meta name="crsf-toke" content="{{ csrf_token() }}">
     <style>
@@ -30,6 +30,10 @@
             text-decoration: none;
             color: white;
         }
+
+        .rol{
+            overflow-y: scroll;
+        }
     </style>
 </head>
 <body>
@@ -39,7 +43,7 @@
                 <div class="card border">
                     <div class="card-header">
                         <div class="card-title">
-                            Cadastro do Cliente
+                            Lista de Cliente
                         </div>
                     </div>
                     <div class="card-body">
@@ -51,25 +55,20 @@
                                     <th>Idade</th>
                                     <th>endereco</th>
                                     <th>email</th>
-                                    <th>acao</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($cliente as $c)
-                                    <tr>
-                                        <td>{{$c['id']}}</td>
-                                        <td>{{$c['name']}}</td>
-                                        <td>{{$c['idade']}}</td>
-                                        <td>{{$c['endereco']}}</td>
-                                        <td>{{$c['email']}}</td>
-                                        <td>
-                                            <form action="{{route('clientes.destroy', $c['id'])}}" method="POST">
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger btn-sm">Excluir</button>
-                                            </form>
-                                            
-                                    </tr>
-                                @endforeach
+                                <div class="rol">
+                                    @foreach ($cliente as $c)
+                                        <tr>
+                                            <td>{{$c['id']}}</td>
+                                            <td>{{$c['name']}}</td>
+                                            <td>{{$c['idade']}}</td>
+                                            <td>{{$c['endereco']}}</td>
+                                            <td>{{$c['email']}}</td>
+                                        </tr>
+                                    @endforeach
+                                </div>
                             </tbody>
                         </table>
                         <button type="submit" class="btn btn-primary btn-sm"><a href="{{route('clientes.create')}}">Novo Cliente</a></button>

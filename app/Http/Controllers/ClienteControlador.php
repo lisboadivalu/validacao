@@ -38,13 +38,28 @@ class ClienteControlador extends Controller
     {
         //dd(request()->all());
 
+
+        $regras = [
+            "nome" => "required",
+            "idade" => "required",
+            "endereco" => "required",
+            "email" => "required|email|unique:clientes"
+        ];
+
+        $mensagens = [
+            'required' => 'o campo :attribute deve ser preenchido',
+            'email.email' => 'digite um email de endereco valido'
+        ];
+        
+        $request->validate($regras, $mensagens);
+        /*
         $request->validate([
             "nome" => "required",
             "idade" => "required",
             "endereco" => "required",
-            "nome" => "required"
+            "email" => "required|email|unique:clientes"
         ]);
-
+            */
         $cliente = new Cliente;
         $cliente->name = $request->input('nome');
         $cliente->idade = $request->input('idade');
@@ -97,9 +112,6 @@ class ClienteControlador extends Controller
      */
     public function destroy($id)
     {
-        $this->id = $id;
-        $del = Cliente::find($id);
-        $del->delete();
-        return redirect()->route('clientes.index');
+        //
     }
 }
