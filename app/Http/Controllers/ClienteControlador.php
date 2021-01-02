@@ -44,7 +44,8 @@ class ClienteControlador extends Controller
         ];
 
         $mensagens = [
-            'required' => 'o campo :attribute deve ser preenchido',
+            //mensagens a serem exibidas nos campos que nao forem preenchidos
+            'required' => 'o campo :attribute deve ser preenchido',  
             'email.email' => 'digite um email de endereco valido'
         ];
         $request->validate($regras, $mensagens);
