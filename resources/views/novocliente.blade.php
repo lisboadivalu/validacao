@@ -38,6 +38,7 @@
                             @csrf
                             <div class="form-group">
                                 <label for="nome">Nome do Cliente</label>
+<<<<<<< HEAD
                                 <input type="text" id="nome" class="form-control {{$errors->has('nome') ? 'is-invalid' : ''}}" name="nome">
                                 @if ($errors->has('nome'))
                                     {{$errors->first('nome')}}
@@ -67,10 +68,45 @@
                             <button type="submit" class="btn btn-primary btn-sm">Salvar</button>
                         </form>
                     </div>
+=======
+                                <input type="text" id="nome" class="form-control" name="nome">
+                            </div>
+                            <div class="form-group">
+                                <label for="idade">Idade do Cliente</label>
+                                <input type="number" id="idade" class="form-control" name="idade">
+                            </div>
+                            <div class="form-group">
+                                <label for="endereco">Endereco do Cliente</label>
+                                <input type="text" id="endereco" class="form-control" name="endereco">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email do Cliente</label>
+                                <input type="text" id="email" class="form-control" name="email">
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-sm">Salvar</button>
+                            <button type="submit" class="btn btn-primary btn-sm"><a href="{{route('clientes.index')}}">Cancelar</a></button>
+                        </form>
+                    </div>
+                    @if($errors->any()))
+                    <div class="card-footer">
+                        @foreach ($errors->all() as $error)
+                            <div class="alert alert-danger" role="alert">
+                                {{$error}}
+                            </div>
+                        @endforeach
+                    </div>
+                @endif
+>>>>>>> master
                 </div>
             </div>
         </div>
     </main>           
+<<<<<<< HEAD
+=======
+    @if(isset($errors))
+    {{ var_dump($errors) }}
+    @endif
+>>>>>>> master
     <script src="{{asset('js/app.js')}}" type="text/javascript"></script>
 </body>
 </html>

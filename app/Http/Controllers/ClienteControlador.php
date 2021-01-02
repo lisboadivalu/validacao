@@ -36,9 +36,6 @@ class ClienteControlador extends Controller
      */
     public function store(Request $request)
     {
-        //dd(request()->all());
-
-
         $regras = [
             "nome" => "required",
             "idade" => "required",
@@ -50,16 +47,8 @@ class ClienteControlador extends Controller
             'required' => 'o campo :attribute deve ser preenchido',
             'email.email' => 'digite um email de endereco valido'
         ];
-        
         $request->validate($regras, $mensagens);
-        /*
-        $request->validate([
-            "nome" => "required",
-            "idade" => "required",
-            "endereco" => "required",
-            "email" => "required|email|unique:clientes"
-        ]);
-            */
+ 
         $cliente = new Cliente;
         $cliente->name = $request->input('nome');
         $cliente->idade = $request->input('idade');
@@ -67,8 +56,6 @@ class ClienteControlador extends Controller
         $cliente->email = $request->input('email');
         $cliente->save();
         return redirect()->route('clientes.index');
-    
-       
     }        
     /**
      * Display the specified resource.
